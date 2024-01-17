@@ -1,6 +1,8 @@
 import styles from '../styles/Home.module.css';
+import { useEffect, useState } from 'react';
 
 function Home() {
+
   return (
     <div>
       <main className={styles.main}>
