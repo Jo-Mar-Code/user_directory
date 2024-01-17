@@ -1,0 +1,20 @@
+.card {
+  border-radius: 20px;
+  width: 18vw;
+  min-height: 40vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.identity {
+  font-size: 30px;
+  color: #ffffff;
+  line-height: 5px;
+  margin: 0 0 10px 10px;
+}
+
+.email {
+  font-size: 13px;
+}
