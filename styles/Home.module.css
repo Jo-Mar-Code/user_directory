@@ -1,9 +1,32 @@
+.fullPage {
+  min-height: 100vh;
+}
+
 .mainContainer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   flex-grow: 1;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.button {
+  margin: 0 10px 0 10px;
+  padding: 0 100px 0 100px;
+  background-color: darkolivegreen;
+  border-radius: 10px;
+  border: solid 1px black;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
 }
 

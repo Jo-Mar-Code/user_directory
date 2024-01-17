@@ -7,24 +7,30 @@ import styles from '../styles/Home.module.css';
 
 function Home() {
   const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?page=1&results=10&nat=fr&seed=abc')
+    fetch(`https://randomuser.me/api/?page=${page}&results=10&nat=fr&seed=abc`)
       .then(response => response.json())
       .then(data => {
         console.log(data.results);
         setUsers(data.results);
       });
-  }, []);
+  }, [page]);
 
+  const firstPage = () => {
+    if (page > 1) { 
+      setPage(page - 1);
+    }
+  }
   
   const userCards = users.map((data, i) => {
     return <Usercard key={i} {...data}/>;
   });
   
   return (
-    <div>
+    <div className={styles.fullPage}>
       <Head>
         <title>User Directory</title>
       </Head>
@@ -32,6 +38,12 @@ function Home() {
       <main className={styles.mainContainer}>
         {userCards}
       </main>
+      <div className={styles.nav}>
+        <button className={styles.button} onClick={() => firstPage()}>Prev. page</button>
+        <p>Page {page}</p>
+        <button className={styles.button} onClick={() => setPage(page + 1)}>Next page</button>
+      </div>
+     
     </div>
   );
 }
