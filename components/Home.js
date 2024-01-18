@@ -10,6 +10,7 @@ function Home() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [searchOption, setSearchOption] = useState('2');
 
   useEffect(() => {
     if (search) {
@@ -36,11 +37,28 @@ function Home() {
       setSearch('');
   }
 
+
   const handleSearch = (searchValue) => {
+    console.log(searchOption, searchValue);
+    if (searchOption === '1') {
     const results = users.filter((result) =>
-      result.name.last.toLowerCase().includes(searchValue.toLowerCase())
+    result.name.first.toLowerCase().includes(searchValue.toLowerCase())
     );
     setSearchResults(results);
+    } else
+    if (searchOption === '2') {
+      const results = users.filter((result) =>
+      result.name.last.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setSearchResults(results);
+      } else
+      if (searchOption === '3') {
+        const results = users.filter((result) =>
+        result.email.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setSearchResults(results);
+        }
+    
     setSearch(searchValue);
     
   }
@@ -49,7 +67,10 @@ function Home() {
     return <Usercard key={i} {...data}/>;
   });
 
-
+  const handleOptionChange = changeEvent => {
+    setSearchOption(changeEvent)
+  };
+  
   
   return (
     <div className={styles.fullPage}>
@@ -61,9 +82,53 @@ function Home() {
        <p className={styles.title}>
     USER DIRECTORY
     </p>
+    
     <div className={styles.search}>
     <input onChange={(e) => handleSearch(e.target.value)} value={search} placeholder='Search user'/>
     </div>
+
+    <div>
+    <div>
+    <label>
+      <input
+        type="radio"
+        name="react-tips"
+        value="1"
+        onChange={(e) => handleOptionChange(e.target.value)}
+        
+      />
+      By firstname
+    </label>
+  </div>
+
+  <div>
+    <label>
+      <input
+        type="radio"
+        name="react-tips"
+        value="2"
+        onChange={(e) => handleOptionChange(e.target.value)}
+        
+      />
+      By lastname
+    </label>
+  </div>
+
+  <div>
+    <label>
+      <input
+        type="radio"
+        name="react-tips"
+        value="3"
+        onChange={(e) => handleOptionChange(e.target.value)}
+        
+      />
+      By email
+    </label>
+  </div>
+
+    </div>
+
   </header>
 
       <main className={styles.mainContainer}>
