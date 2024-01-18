@@ -13,6 +13,9 @@ function Home() {
   const [searchOption, setSearchOption] = useState("2");
   const [nbUsers, setNbUsers] = useState(10);
 
+
+  //API request
+
   useEffect(() => {
     if (search) {
       setUsers(searchResults);
@@ -28,6 +31,9 @@ function Home() {
     }
   }, [page, search, nbUsers]);
 
+
+  //navigation
+
   const goToPreviousPage = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -39,6 +45,9 @@ function Home() {
     setPage(page + 1);
     setSearch("");
   };
+
+
+  //search input options
 
   const handleSearch = (searchValue) => {
     console.log(searchOption, searchValue);
@@ -62,9 +71,15 @@ function Home() {
     setSearch(searchValue);
   };
 
+
+  //Users cards
+
   const userCards = users.map((data, i) => {
     return <Usercard key={i} {...data} />;
   });
+
+  
+  //set search options
 
   const handleOptionChange = (changeEvent) => {
     setSearchOption(changeEvent);
