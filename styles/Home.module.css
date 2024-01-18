@@ -1,8 +1,7 @@
 .fullPage {
-  max-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  
 }
 
 .header {
@@ -19,7 +18,7 @@
   font-weight: 700;
 }
 
-.search input{
+.search input {
   border-radius: 5px;
   width: 250px;
   height: 30px;
@@ -27,11 +26,27 @@
   cursor: auto;
 }
 
+.radio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nbUsers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nbUsers input {
+  cursor: auto;
+}
+
 .mainContainer {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
   min-height: 85vh;
   flex-grow: 1;
 }
